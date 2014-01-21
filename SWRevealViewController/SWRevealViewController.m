@@ -239,7 +239,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     CGFloat revealWidth;
     CGFloat revealOverdraw;
     
-    CGFloat location = 0.0f;
+    CGFloat location = _c.frontViewPositionDisplacement;
     
     int symetry = frontViewPosition<FrontViewPositionLeft? -1 : 1;
     [_c _getRevealWidth:&revealWidth revealOverDraw:&revealOverdraw forSymetry:symetry];
@@ -427,6 +427,7 @@ const int FrontViewPositionNone = 0xff;
     _userInteractionStore = YES;
     _animationQueue = [NSMutableArray array];
     _draggableBorderWidth = 0.0f;
+    _frontViewPositionDisplacement = 0.0f;
 }
 
 
@@ -1347,7 +1348,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     
     void (^completionBlock)(void) = ^(void)
     {
-        [controller.view removeFromSuperview];
+//        [controller.view removeFromSuperview];
     };
     
     return completionBlock;

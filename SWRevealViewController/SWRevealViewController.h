@@ -177,6 +177,10 @@ typedef enum
 @property (assign, nonatomic) CGFloat rearViewRevealDisplacement;
 @property (assign, nonatomic) CGFloat rightViewRevealDisplacement;
 
+
+@property (assign, nonatomic) CGFloat frontViewPositionDisplacement;
+
+
 // Defines a width on the border of the view attached to the panGesturRecognizer where the gesture is allowed,
 // default is 0 which means no restriction.
 @property (assign, nonatomic) CGFloat draggableBorderWidth;
