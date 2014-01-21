@@ -1,20 +1,22 @@
 # SWRevealViewController
 
-A UIViewController subclass for presenting two view controllers inspired on the FaceBook app, done right!
+A UIViewController subclass for revealing a rear (left and/or right) view controller behind a front controller, inspired by the Facebook app, done right!
 
 ## Features
 
-* A Reveal view controller implemented using view controller containment, done right!.
-* API is easier than a UINavigationController.
-* Supports any combination of Left/Right rear controllers.
-* Correctly handles appearance methods on its child controllers that you can rely on.
-* Correctly handles rotations.
-* Can be embedded as a child view controller of other controllers, it just works, no glitches, no interface artifacts, no initialization issues, no rotation or resizing problems.
-* Can be deployed as a child of itself to create cascade like, hierarchical interfaces.
+* A Reveal view controller implemented using view controller containment.
+* API easier than a UINavigationController.
+* Support for any combination of left/right rear controllers.
+* Correct handling of appearance methods on its child controllers that you can rely on.
+* Correct handling of rotations.
+* Can be embedded as a child view controller of other controllers or deployed as the rootViewController.
+* Plays nicely with any child view controllers or parent controllers.
+* Can be deployed as a child of itself to create cascade-like, hierarchical interfaces.
 * Seamless integration of pan gesture recognizer, behaving as smooth as silk.
-* Includes a category method of UIViewController 'revealViewController' to get the parent SWRevealViewController of any child controller. Similar to the UIViewController's property 'navigationController'.
-* Light weight, Clean, Easy to read, self explaining code you will enjoy using in your projects.
+* A category method on UIViewController, `revealViewController`, to get the parent `SWRevealViewController` of any child controller, similar to the UIViewController's property `navigationController`.
+* Lightweight, clean, easy-to-read, self-documenting code that you will enjoy using in your projects.
 
+## Examples
 
 ![Dynamic](https://raw.github.com/John-Lluch/SWRevealViewController/master/SWRevealViewController3.png)
 ![Dynamic](https://raw.github.com/John-Lluch/SWRevealViewController/master/SWRevealViewController.png)
@@ -22,41 +24,70 @@ A UIViewController subclass for presenting two view controllers inspired on the 
 
 ## Requirements
 
-* iOS 6.0 or later, tested to work fine on iOS 5.1 as well.
+* iOS 5.1 through iOS 7.0 or later.
 * ARC memory management.
 
 ## Usage
 
-* Copy the following to your project:
-   * SWRevealViewController.h
-   * SWRevealViewController.m
+The SWRevealViewController repository attempts to provide an updated cocoaPods file and consistent tag versioning, but it is not actively updated on the cocoapods-specs repository.
 
+The easiest way to install it is by copying the following to your project:
+* SWRevealViewController.h
+* SWRevealViewController.m
 
 * Initialize an instance of a SWRevealViewController passing in a "rear" and a "front" view controllers.
+* Optionaly add a "right" view controller or pass nil as the "rear" view controller.
 * Use the SWRevealViewController instance in your code as you would use any view controller.
 * Deploy as the application window rootViewController, or as a child of other containment controllers.
-* Add the panGestureRecognized provided by the SWRevealViewController to a suitable view of your "front" view controller, for example use the viewDidLoad method of your controller to add the gesture recognizer to a navigationBar.
-* At any time, you can reveal, conceal the "rear" view or replace the "front" view controller, programmatically or based on user actions, with or without animations enabled
+* Get the panGestureRecognized and tapGestureRecognizer provided by the SWRevealViewController. You can leave them as they are for the default behavior or you can add them to a suitable view on your "front" view controller. For example add the panGestureRecognizer to a navigationBar on the viewDidLoad method of your front controller.
+* At any time, you can reveal, conceal the "rear" or "right" views or replace any of the view controllers, programmatically or based on user actions, with or without animations enabled
 
-## Basic API description
+## Basic API Description
 
 Initializing a SWRevealViewController:
 
     - (id)initWithRearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController;
+
+Setting a right view controller:
+
+	@property (strong, nonatomic) UIViewController *rightViewController;
 	
-Setting or changing the front view controller:
+Animated setting of the front view controller:
 
     - (void)setFrontViewController:(UIViewController *)frontViewController animated:(BOOL)animated;
 
-Setting the position of the front view controller. Position can be FrontViewPositionLeft, FrontViewPositionRight, FrontViewPositionRightMost or FrontViewPositionRightMostRemoved:
+Animating the position of the front view controller. Position can be: `FrontViewPositionLeftSideMostRemoved`, `FrontViewPositionLeftSideMost`, `FrontViewPositionLeftSide`, `FrontViewPositionLeft`, `FrontViewPositionRight`, `FrontViewPositionRightMost` or `FrontViewPositionRightMostRemoved`
 
 	- (void)setFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated;
 	
-Obtaining a gesture recognizer to add to your front view controller:
+Creating and obtaining a pan gesture recognizer:
 
 	- (UIPanGestureRecognizer*)panGestureRecognizer;
+
+Creating and obtaining a tap gesture recognizer:
+
+	- (UITapGestureRecognizer*)tapGestureRecognizer;
 	
 Other methods are documented in the SWRevealViewController.h header file. 
+
+
+## Release Notes
+
+As of November 15, 2013 Release Notes are updated on the class main header file. Please see `SWRevealViewController.h`
+
+## Tutorial
+
+Some time ago the guys at AppCoda published an online tutorial featuring the SWRevealViewController: "How To Add a Slide-out Sidebar Menu in Your Apps" (thanks for that). You will find it at http://www.appcoda.com/ios-programming-sidebar-navigation-menu/ . Not updated to the last SWRevealViewController version but still worth a read.
+
+## Xamarin Binding
+
+Thanks to Jesper Vandborg for having contributed with a Xamarin Binding project for this controller that is available for download at https://github.com/Vandborg/SWRevealViewController-XamarinBinding.
+
+## Special Mentions
+
+A Special Thank you to Joan Martin who formely worked at http://www.sweetwilliamsl.com and has recently been developing an app for http://www.citizen.tv. He had the original idea and implemented code for generic view deployment/undeployment and replacement of view controllers used in the class. 
+
+Early code and api was inspired on a similar class by Philip Kluz (Philip.Kluz@zuui.org)
 	
 ## License
 

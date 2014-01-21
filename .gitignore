@@ -1,20 +1,10 @@
-#/RevealControllerProject3.xcodeproj/xcuserdata/Nick.xcuserdatad/
-#/RevealControllerProject3.xcodeproj/project.xcworkspace/xcuserdata/Nick.xcuserdatad/
-#/RevealControllerProject2.xcodeproj/xcuserdata/Nick.xcuserdatad/
-#/RevealControllerProject2.xcodeproj/project.xcworkspace/xcuserdata/Nick.xcuserdatad/
-#/RevealControllerProject.xcodeproj/xcuserdata/Nick.xcuserdatad/
-#/RevealControllerProject.xcodeproj/project.xcworkspace/xcuserdata/Nick.xcuserdatad/
-
-
-martinhj.*
-hhernandez.*
-joan.*
-*xcuserdata/*
-*copy.*
-
 # From https://github.com/github/gitignore/blob/master/Objective-C.gitignore
 #
-*.DS_Store
+
+# OS X
+.DS_Store
+
+# Xcode
 build/
 *.pbxuser
 !default.pbxuser
@@ -24,10 +14,13 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 xcuserdata
+*.xccheckout
 profile
 *.moved-aside
 DerivedData
-.idea/
+*.hmap
+*.ipa
+
+# CocoaPods
+Pods

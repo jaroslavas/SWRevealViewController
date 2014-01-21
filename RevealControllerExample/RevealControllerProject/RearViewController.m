@@ -20,7 +20,10 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
-
+ 
+ Original code:
+ Copyright (c) 2011, Philip Kluz (Philip.Kluz@zuui.org)
+ 
 */
 
 #import "RearViewController.h"
@@ -36,6 +39,18 @@
 @implementation RearViewController
 
 @synthesize rearTableView = _rearTableView;
+
+
+#pragma mark - View lifecycle
+
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	self.title = NSLocalizedString(@"Rear View", nil);
+}
+
 
 #pragma marl - UITableView Data Source
 

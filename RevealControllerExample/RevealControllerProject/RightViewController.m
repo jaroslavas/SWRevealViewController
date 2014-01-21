@@ -23,11 +23,13 @@
 */
 
 #import "RightViewController.h"
+#import "MapViewController.h"
 #import "SWRevealViewController.h"
 
 @interface RightViewController ()
 // Private Methods:
 - (IBAction)replaceMe:(id)sender;
+- (IBAction)toggleFront:(id)sender;
 @end
 
 @implementation RightViewController
@@ -59,12 +61,46 @@
     // Dispose of any resources that can be recreated.
 }
 
+#define TestStatusBarStyle 0   // <-- set this to 1 to test status bar style
+#if TestStatusBarStyle
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+#endif
+
+#define TestStatusBarHidden 0  // <-- set this to 1 to test status bar hidden
+#if TestStatusBarHidden
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+#endif
 
 - (IBAction)replaceMe:(id)sender
 {
     RightViewController *replacement = [[RightViewController alloc] init];
     [self.revealViewController setRightViewController:replacement];
 }
+
+
+- (IBAction)toggleFront:(id)sender
+{
+    MapViewController *mapViewController = [[MapViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
+    
+    [self.revealViewController setFrontViewController:navigationController animated:YES];
+    
+    //    This is what was required Before v1.0.9 (Now it was commented out)
+    //
+    //    SWRevealViewController *revealController = self.revealViewController;
+    //    [revealController setFrontViewPosition:FrontViewPositionLeftSideMost animated:YES];
+    //    [revealController setFrontViewController:navigationController];
+    //    [revealController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+}
+
+
+
 
 //- (void)dealloc
 //{

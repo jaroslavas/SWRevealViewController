@@ -38,6 +38,15 @@
     self.tableView.separatorColor = [UIColor colorWithWhite:0.5 alpha:1.0];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+}
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 #pragma mark - Table view data source
 
@@ -80,7 +89,11 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = self.tableView.backgroundColor;
 
+}
 
 #pragma mark - Table view delegate
 
@@ -152,6 +165,7 @@
             
             
             childRevealController.rearViewRevealWidth = 200;
+            childRevealController.rearViewRevealDisplacement = 0;
             [childRevealController setFrontViewPosition:FrontViewPositionRight animated:NO];
             frontController = childRevealController;
             break;
